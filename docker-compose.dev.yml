@@ -17,7 +17,7 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: usermail@email.com
+      PGADMIN_DEFAULT_EMAIL: delantendai@yahoo.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "1555:80"
