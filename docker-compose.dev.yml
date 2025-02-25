@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  multex_customer_postgres:
+    image: postgres:13
+    container_name: multex-customer-postgres
+    environment:
+      POSTGRES_USER: multex
+      POSTGRES_PASSWORD: multex4041
+      POSTGRES_DB: multex_client
+    ports:
+      - "5432:5432"
+    volumes:
+      - multex_customer_postgres_data:/var/lib/postgresql/data
+ 
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: usermail@email.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "1555:80"
+
+volumes:
+  multex_customer_postgres_data:

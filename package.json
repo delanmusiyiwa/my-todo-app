@@ -1,0 +1,30 @@
+{
+  "name": "my-todo-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "next": "15.1.7",
+    "pg": "^8.13.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7",
+    "prisma": "^6.4.1",
+    "typescript": "^5"
+  },
+  "description": "A Next.js to-do app",
+  "author": "Unknown",
+  "license": "MIT"
+}
