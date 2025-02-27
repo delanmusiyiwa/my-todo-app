@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '../../lib/prisma'
+import { PrismaClient } from '@prisma/client'
+import { env } from  'process'
 
 // POST /api/tasks
 export async function POST(request: Request) {
@@ -9,6 +10,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Title is required' }, { status: 400 })
     }
 
+    const prisma = new PrismaClient({
+      datasourceUrl: env.DATABASE_URL,
+    });
+
+    
     const newTask = await prisma.task.create({
       data: {
         title,
@@ -29,6 +35,10 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 })
     }
 
+    const prisma = new PrismaClient({
+      datasourceUrl: env.DATABASE_URL,
+    });
+
     const updatedTask = await prisma.task.update({
       where: { id },
       data: { completed },
@@ -47,6 +57,10 @@ export async function DELETE(request: Request) {
     if (!id) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 })
     }
+
+    const prisma = new PrismaClient({
+      datasourceUrl: env.DATABASE_URL,
+    });
 
     await prisma.task.delete({
       where: { id },

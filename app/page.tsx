@@ -1,7 +1,8 @@
-import { prisma } from './lib/prisma'
 import AddTaskForm from './components/AddTaskForm'
 import UpdateTodoButton from './components/UpdateTodoButton'
 import DeleteTodoButton from './components/DeleteTodoButton'
+import { PrismaClient } from '@prisma/client'
+import { env } from  'process'
 
 export interface Task {
   id: number
@@ -12,6 +13,10 @@ export interface Task {
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
+  const prisma = new PrismaClient({
+    datasourceUrl: env.DATABASE_URL,
+  });
+
   // Fetch tasks (Server Component)
   const tasks = await prisma.task.findMany({
     orderBy: { createdAt: 'desc' },
