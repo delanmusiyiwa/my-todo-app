@@ -17,7 +17,6 @@ COPY --from=builder /app/node_modules ./node_modules
 
 # Expose port
 ENV PORT=3000
-ENV DATABASE_URL=postgresql://postgres:postgres@multex.cbac8osi8jre.us-east-1.rds.amazonaws.com:5432/todo
 EXPOSE 3000
 
 # No DATABASE_URL is set here, we will pass it at runtime
